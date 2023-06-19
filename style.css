@@ -1,0 +1,246 @@
+* {
+    margin:0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    box-sizing: border-box;
+    overflow: auto;
+    /*This will enable scrolling when required by default*/
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background:  rgb(7, 163, 7);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background:  rgb(3, 80, 3);
+  }
+body {
+    background-color: rgba(128, 128, 128, 0.671);
+    margin-top: 100px;
+}
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px;
+    font-weight: bold;
+    position: fixed;
+    top: 0px;
+    width: 100%; 
+    border-bottom: 2px solid rgb(7, 163, 7);;
+}
+.transparent-background{
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    opacity: 0.4;
+    top: 0px;
+    z-index: -1;
+    position: fixed;
+}
+#menu-haeding{
+    display: none;
+}
+.menu-footer{
+    display: none;
+}
+.logo {
+    font-weight: bold;
+    font-size: 30px;
+    background-color:  rgb(7, 163, 7);
+    background-image: linear-gradient(to right,  rgb(7, 163, 7),  rgb(4, 77, 4)); 
+    padding: 7px 13px;
+    overflow: hidden;
+    clip-path: polygon(
+        0% 10%,
+        10% 0%,
+        90% 0%,
+        100% 10%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0% 90%,
+        0% 10%
+    );
+}
+.menubar {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+.menubar i{
+    color: white;
+    /*this was able to work by seprately selecting 
+    (targetting) the i tagadding the i tag*/
+}
+.menubar i:hover{
+    color: black;
+}
+.menu ul{
+    display:flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    text-transform: uppercase;
+}
+.menu ul li a{
+    text-decoration: none;
+} 
+.menu ul li a:hover{
+    transition: 0.5s;
+    text-decoration: underline;
+    color: rgb(7, 163, 7); 
+}
+.menu2 > li{
+/*This (>) ensures it target only the 
+decendent element one level down*/
+    margin-left: 35px;
+}
+.list > a{
+    font-size: 17px; 
+}
+.menu3{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 60px;
+    background-color: black;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 0px;
+    visibility: hidden;
+    opacity: 0;
+}
+.menu3 > li{
+    margin: 10px;
+    text-align: center;
+}
+.dropdown > a::after{
+    font-family: "Font Awesome 6 Free";
+    font-size: 12px;
+    font-weight: bold;
+    content: "\f078";
+    margin-left: 8px;
+}
+.menu3.active {
+    transform: translateY(0rem);
+    visibility: visible;
+    opacity: 1;
+  }
+@media (max-width: 760px) {
+
+    nav{
+        padding: 0 10px;
+        height: 75px;
+    }
+    .menu {
+        height: 100%;
+        /*This will be percentage height to any 
+        device. This is the best way to specify 
+        height in this example*/
+        position: fixed;
+        left:0;
+         /*or leftt: 0 remove the 20px nav padding 
+         from the left*/
+        top: 0px;
+        width: 50%;
+        background-color: black;
+        transition: 0.2s; 
+        opacity: 1;
+        visibility: show;
+    }
+    .menu ul{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        transition: 0.2s;    
+        text-align: left;
+    }
+    .menu2 > li{ 
+        margin-left: 30px;
+        margin-right: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;  
+    }
+    .list > a{
+        font-size: 25px;
+    } 
+    .menu3{
+        position: fixed;
+        background-color: black;
+        left: 50%;
+        top: 50%;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 10px;
+    }
+    .menubar{
+        display: block;
+        font-size: 30px;
+        padding: 7px 12px;
+    }
+    .logo{
+        font-size:40px;
+    }
+    .transparent-background{
+        height: 75px;
+    }
+    #menu-haeding{
+        display: block;
+        font-size: 55px;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 25px;
+    }
+    .menu-footer{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap:20px;
+        justify-content: center;
+        padding: 40px;
+        margin-top: 40px;
+        background-color: rgb(7, 163, 7);
+        background-image: linear-gradient(to right,  rgb(7, 163, 7),  rgba(0, 0, 0, 0.76)); 
+        top: 80%;
+        /*bottom 0 did not work*/
+        left: 0px;
+        width: 100%;
+        /*the width will be 100% of .menu class 70% 
+        i.e, relative to .menu class*/
+    }
+    .menu-footer i{
+        font-size: 25px;
+        cursor: pointer;
+        text-align: center;
+    }
+    .menu.active{
+        visibility: hidden;
+        opacity: 0;
+    }
+    /*Opacity only reduces the transparency of 
+    the element but it can still be interactable, 
+    hence combining visibilty and opacity*/
+    .menu.active{
+        width: 0%;
+    }
+    /*Using the two class above will produce 
+    animation effect with transition, unlike 
+    display:none which do not transition*/
+    }
+   
